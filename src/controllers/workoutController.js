@@ -122,5 +122,5 @@ module.exports = {
   createNewWorkout,
   updateOneWorkout,
   deleteOneWorkout,
-  getRecordsForWorkout,
+  //getRecordsForWorkout,
 };
