@@ -1,1 +1,0 @@
-mkdir controllers && mkdir services && mkdir database && mkdir routesmkd
