@@ -1,19 +1,29 @@
-// In src/database/workoutService.js
+// In src/services/workoutService.js
+// *** ADD ***
+const { v4: uuid } = require("uuid");
 // *** ADD ***
 const Workout = require("../database/Workout");
+
 const getAllWorkouts = () => {
-  // *** ADD ***
-  const allWorkouts = Workout.getAllWorkouts();
-  // *** ADD ***
-  return allWorkouts;
+    const allWorkouts = Workout.getAllWorkouts();
+    return allWorkouts;
 };
 
 const getOneWorkout = () => {
   return;
 };
 
-const createNewWorkout = () => {
-  return;
+const createNewWorkout = (newWorkout) => {
+  // *** ADD ***
+  const workoutToInsert = {
+    ...newWorkout,
+    id: uuid(),
+    createdAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
+    updatedAt: new Date().toLocaleString("en-US", { timeZone: "UTC" }),
+  };
+  // *** ADD ***
+  const createdWorkout = Workout.createNewWorkout(workoutToInsert);
+  return createdWorkout;
 };
 
 const updateOneWorkout = () => {
