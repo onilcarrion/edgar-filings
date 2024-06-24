@@ -5,7 +5,16 @@ const apicache = require("apicache");
 const workoutController = require("../../controllers/workoutController");
 const recordController = require("../../controllers/recordController");
 
+//  Custom made middlewares
+// const authenticate = require("../../middlewares/authenticate");
+// const authorize = require("../../middlewares/authorize");
+
+// router.post("/", authenticate, authorize, workoutController.createNewWorkout);
+// 
+
 const router = express.Router();
+
+
 // *** ADD ***
 const cache = apicache.middleware;
 
@@ -23,4 +32,6 @@ router.patch("/:workoutId", workoutController.updateOneWorkout);
 router.delete("/:workoutId", workoutController.deleteOneWorkout);
 
 module.exports = router;
+
+
 
