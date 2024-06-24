@@ -1,17 +1,20 @@
 // In src/v1/routes/workoutRoutes.js
 const express = require("express");
-const workoutController = require("../../controllers/workoutController");
 // *** ADD ***
+const apicache = require("apicache");
+const workoutController = require("../../controllers/workoutController");
 const recordController = require("../../controllers/recordController");
 
 const router = express.Router();
+// *** ADD ***
+const cache = apicache.middleware;
 
-router.get("/", workoutController.getAllWorkouts);
+// *** ADD ***
+router.get("/", cache("2 minutes"), workoutController.getAllWorkouts);
 
 router.get("/:workoutId", workoutController.getOneWorkout);
 
-// *** ADD ***
-// router.get("/:workoutId/records", recordController.getRecordForWorkout);
+router.get("/:workoutId/records", recordController.getRecordsForWorkout);
 
 router.post("/", workoutController.createNewWorkout);
 
